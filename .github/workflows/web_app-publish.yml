@@ -17,14 +17,6 @@ jobs:
     steps:  
     -
       uses: actions/checkout@v2
-    
-    -
-      name: Generate build number
-      id: buildnumber
-      uses: einaregilsson/build-number@v3 
-      with:
-        token: ${{secrets.github_token}}  
-        
     -    
       name: Build Docker image
       run: docker build . --tag mastermole/my_best_server1:${{ secrets.MAJOR }}.${{ secrets.MINOR }}.${{ secrets.PATCH }}.${{ steps.buildnumber.outputs.build_number }}
