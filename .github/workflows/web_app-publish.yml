@@ -25,7 +25,7 @@ jobs:
         
     -    
       name: Build Docker image
-      run: docker build . --tag web_app:${{ secrets.MAJOR }}.${{ secrets.MINOR }}.${{ secrets.PATCH }}.${{ steps.buildnumber.outputs.build_number }}
+      run: docker build . -t web_app:${{ secrets.MAJOR }}.${{ secrets.MINOR }}.${{ secrets.PATCH }}.${{ steps.buildnumber.outputs.build_number }}
     -
       name: Login to DockerHub
       uses: docker/login-action@v1 
