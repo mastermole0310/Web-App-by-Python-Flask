@@ -31,4 +31,4 @@ jobs:
    
     -
       name: Push to the DockerHub
-      run: docker push mastermole/web_app:${{ secrets.MAJOR }}.${{ secrets.MINOR }}.${{ secrets.PATCH }}.${{ env.Deploy Package Name }}
+      run: docker push mastermole/web_app:${{ secrets.MAJOR }}.${{ secrets.MINOR }}.${{ secrets.PATCH }}.${{ env.DEPLOY_PACKAGE_NAME }}
