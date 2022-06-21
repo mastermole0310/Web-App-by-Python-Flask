@@ -27,7 +27,7 @@ jobs:
         token: ${{secrets.github_token}}    
     -    
       name: Build Docker image
-      run: docker build . --tag mastermole/web_app:${{ secrets.MAJOR }}.${{ secrets.MINOR }}.${{ secrets.PATCH }}.${{ steps.buildnumber.outputs.build_number }}
+      run: docker build /home/runner/work/Web-App-by-Python-Flask/Web-App-by-Python-Flask/tree/web_app/Dockerfile --tag mastermole/web_app:${{ secrets.MAJOR }}.${{ secrets.MINOR }}.${{ secrets.PATCH }}.${{ steps.buildnumber.outputs.build_number }}
     -
       name: Login to DockerHub
       uses: docker/login-action@v1 
