@@ -39,8 +39,8 @@ jobs:
       with:
         load: true
         tags: mastermole/web_app:${{ secrets.MAJOR }}.${{ secrets.MINOR }}.${{ secrets.PATCH }}.${{ steps.buildnumber.outputs.build_number }}
-        context: web_app
-        file: web_app/Dockerfile
+        context: ./web_app
+        file: ./web_app/Dockerfile
    
     -
       name: Push to the DockerHub
