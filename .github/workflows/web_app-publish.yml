@@ -1,4 +1,4 @@
-name: ci
+name: Publish Web App
 env:
   DEPLOY_PACKAGE_NAME: "${{ github.sha }}"
 
