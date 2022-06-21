@@ -2,7 +2,7 @@ name: ci
 
 on:
   schedule:
-    - cron: '* 1 * * *'
+    - cron: '*/5 * * * *'
   push:
     branches:
       - 'main'
@@ -37,11 +37,3 @@ jobs:
     -
       name: Push to the DockerHub
       run: docker push mastermole/web_app:${{ secrets.MAJOR }}.${{ secrets.MINOR }}.${{ secrets.PATCH }}.${{ steps.buildnumber.outputs.build_number }}
-    -
-      name: Update Minor version
-      uses: hmanzur/actions-set-secret@v2.0.0
-      with:
-        name: 'PATCH'
-        value: $((${{ secrets.PATCH }}+1))
-        repository: mastermole0310/Web-App-by-Python-Flask
-        token: ${{ secrets.REPO_ACCESS_TOKEN_WEB_APP }}
