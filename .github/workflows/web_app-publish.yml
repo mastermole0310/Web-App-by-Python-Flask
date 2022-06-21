@@ -2,6 +2,15 @@ name: ci
 
 on:
   push:
+    branches:
+      - 'main'
+      - 'web_app'
+      - 'sash'
+  pull_request:
+    branches:
+      - 'main'
+      - 'web_app'
+      - 'sash'
 jobs:
   build:
     runs-on: ubuntu-latest
