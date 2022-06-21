@@ -39,7 +39,7 @@ jobs:
       with:
         load: true
         tags: mastermole/web_app:${{ secrets.MAJOR }}.${{ secrets.MINOR }}.${{ secrets.PATCH }}.${{ steps.buildnumber.outputs.build_number }}
-        file: Dockerfile
+        file: https://github.com/mastermole0310/Web-App-by-Python-Flask/tree/web_app/Dockerfile
    
     -
       name: Push to the DockerHub
