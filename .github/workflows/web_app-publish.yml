@@ -14,9 +14,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: refs/heads/tree/web_app
     steps:  
     -
       uses: actions/checkout@v3
