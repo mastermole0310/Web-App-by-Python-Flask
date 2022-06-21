@@ -1,6 +1,6 @@
 name: ci
 env:
-  DEPLOY_PACKAGE_NAME: "flask_version-${{ github.sha }}" 
+  DEPLOY_PACKAGE_NAME: "${{ github.sha }}"
 
 on:
   push:
