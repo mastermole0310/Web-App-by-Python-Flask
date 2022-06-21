@@ -1,4 +1,4 @@
 Status of Last Build:<br>
-![Publish web app](https://github.com/mastermole0310/Web-App-by-Python-Flask/workflows/my_app-publish.yml/badge.svg?branch=main)
+<img src="https://github.com/mastermole0310/Web-App-by-Python-Flask/workflows/Publish Web App/badge.svg?branch-main"><br>
 
 Create Web App by Python Flask
