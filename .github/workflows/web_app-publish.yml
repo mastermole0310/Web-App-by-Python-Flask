@@ -43,5 +43,5 @@ jobs:
       with:
         name: 'PATCH'
         value: $((${{ secrets.PATCH }}+1))
-        repository: mastermole0310/web_app
+        repository: mastermole0310/Web-App-by-Python-Flask
         token: ${{ secrets.REPO_ACCESS_TOKEN }}
