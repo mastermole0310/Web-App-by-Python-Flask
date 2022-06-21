@@ -3,17 +3,20 @@ name: ci
 on:
   schedule:
     - cron: '* 1 * * *'
-  pull_request:
   push:
     branches:
       - 'main'
-      - 'web_app'
+      - 'Web-App-Python-Flask/web_app'  
+  pull_request:
+    branches:
+      - 'main'
+      - 'Web-App-Python-Flask/web_app'
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:  
     -
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     -
       name: Generate build number
       id: buildnumber
@@ -22,7 +25,7 @@ jobs:
         token: ${{secrets.github_token}}    
     -    
       name: Build Docker image
-      run: docker build . --tag mastermole/web_app:${{ secrets.MAJOR }}.${{ secrets.MINOR }}.${{ secrets.PATCH }}.${{ steps.buildnumber.outputs.build_number }}
+      run: docker build  --tag mastermole/web_app:${{ secrets.MAJOR }}.${{ secrets.MINOR }}.${{ secrets.PATCH }}.${{ steps.buildnumber.outputs.build_number }}
     -
       name: Login to DockerHub
       uses: docker/login-action@v1 
