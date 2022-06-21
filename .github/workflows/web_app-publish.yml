@@ -2,13 +2,6 @@ name: ci
 
 on:
   push:
-    branches:
-      - 'main'
-      - 'Web-App-Python-Flask/web_app'  
-  pull_request:
-    branches:
-      - 'main'
-      - 'Web-App-Python-Flask/web_app'
   schedule:
     - cron: '0 * * * *'    
 jobs:
