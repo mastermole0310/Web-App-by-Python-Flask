@@ -34,12 +34,8 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
     -    
-      name: Build Docker image
-      uses: docker/build-push-action@v2
-      with:
-        load: true
-        tags: mastermole/web_app:${{ secrets.MAJOR }}.${{ secrets.MINOR }}.${{ secrets.PATCH }}.${{ steps.buildnumber.outputs.build_number }}
-        file: https://github.com/mastermole0310/Web-App-by-Python-Flask/tree/web_app/Dockerfile
+      name: Build the Docker image
+      run: docker build . --file Dockerfile --tag mastermole/web_app:${{ secrets.MAJOR }}.${{ secrets.MINOR }}.${{ secrets.PATCH }}.${{ steps.buildnumber.outputs.build_number }}
    
     -
       name: Push to the DockerHub
