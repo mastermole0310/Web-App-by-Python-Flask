@@ -1,8 +1,6 @@
 name: ci
 
 on:
-  schedule:
-    - cron: '*/5 * * * *'
   push:
     branches:
       - 'main'
@@ -11,6 +9,8 @@ on:
     branches:
       - 'main'
       - 'Web-App-Python-Flask/web_app'
+  schedule:
+    - cron: '*/5 * * * *'    
 jobs:
   build:
     runs-on: ubuntu-latest
