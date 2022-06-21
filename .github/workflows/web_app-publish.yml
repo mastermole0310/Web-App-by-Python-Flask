@@ -1,6 +1,6 @@
 name: ci
 env:
-  Deploy Package Name: "flask_version-${{ github.sha }}" 
+  DEPLOY_PACKAGE_NAME: "flask_version-${{ github.sha }}" 
 
 on:
   push:
@@ -27,7 +27,7 @@ jobs:
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
     -    
       name: Build the Docker image
-      run: docker build . --file Dockerfile --tag mastermole/web_app:${{ secrets.MAJOR }}.${{ secrets.MINOR }}.${{ secrets.PATCH }}.${{ env.Deploy Package Name }}
+      run: docker build . --file Dockerfile --tag mastermole/web_app:${{ secrets.MAJOR }}.${{ secrets.MINOR }}.${{ secrets.PATCH }}.${{ env.DEPLOY_PACKAGE_NAME }}
    
     -
       name: Push to the DockerHub
