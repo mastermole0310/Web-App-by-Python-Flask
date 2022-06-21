@@ -10,7 +10,7 @@ on:
       - 'main'
       - 'Web-App-Python-Flask/web_app'
   schedule:
-    - cron: '*/5 * * * *'    
+    - cron: '0 * * * *'    
 jobs:
   build:
     runs-on: ubuntu-latest
