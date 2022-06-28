@@ -16,31 +16,34 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
+    - name: Checkout
       uses: actions/checkout@v2
-    
-    - name: Gets semantic release info
-      id: semantic_release_info
-      uses: jossef/action-semantic-release-info@v1
-      env:
-        PACKAGE_NAME: "${{ github.sha }}"
-        
     - name: Setup Node.js
       uses: actions/setup-node@v1
       with:
         node-version: 16.x
-    
+    - name: Install dependencies
+      run: npx ci
+    - name: Install semantic-release extra plugins
+      run: npm install --save-dev @semantic-release/changelog @semantic-release/git      
+    - name: Lint
+      run: npm run lint-fix
+    - name: Test
+      run: npm run test:unit --if-present
     - name: Build
-      run: |
-        npm ci --only=prod
-        npm run build
+      run: npm run build      
+    - name: Release
+      env:
+        GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN_WEB_APP }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      run: npx semantic-release
         
     - name: Update package.json version
       uses: jossef/action-set-json-field@v2
       with:
         file: my_json.json
         field: Version
-        value: ${{ steps.semantic_release_info.outputs.git_tag }}
+        value: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Build image
       run: docker build . --tag mastermole/my_app:${{ env.Version_name }}.${{ env.PACKAGE_NAME }}
