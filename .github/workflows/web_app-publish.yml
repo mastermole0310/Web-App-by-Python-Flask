@@ -13,37 +13,48 @@ on:
       - 'web_app'
       - 'sash'
 jobs:
-  build:
+  release:
+    name: Release
     runs-on: ubuntu-latest
+    # Skip running release workflow on forks
+    if: github.repository_owner == 'patsevanton'
     steps:
-    - name: Release
-      uses: cycjimmy/semantic-release-action@v2
-      with:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Release
+        uses: cycjimmy/semantic-release-action@v2
+        with:
           semantic_version: 18.0.0
           extra_plugins: |
             @semantic-release/changelog@6.0.0
             @semantic-release/git@10.0.0
             conventional-changelog-conventionalcommits@4.6.3
             conventional-changelog-eslint@3.0.9
-      env:
-        GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN_WEB_APP }} 
+        env:
+          GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN_WEB_APP }}
+      
+      
         
-    - name: Update package.json version
-      uses: jossef/action-set-json-field@v2
-      with:
-        file: my_json.json
-        field: Version
-        value: ${{ secrets.REPO_ACCESS_TOKEN_WEB_APP }}
+      - name: Update package.json version
+        uses: jossef/action-set-json-field@v2
+        with:
+         file: my_json.json
+         field: Version
+         value: ${{ secrets.REPO_ACCESS_TOKEN_WEB_APP }}
         
-    - name: Build image
-      run: docker build . --tag mastermole/my_app:${{ env.Version_name }}.${{ env.PACKAGE_NAME }}
+      - name: Build image
+        run: docker build . --tag mastermole/my_app:${{ env.Version_name }}.${{ env.PACKAGE_NAME }}
         
-    - name: Login to DockerHub
-      uses: docker/login-action@v1 
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}    
-    - name: Push image
-      run: |
-        docker push mastermole/my_app:${{ env.Version_name }}.${{ env.PACKAGE_NAME }}
+      - name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+         username: ${{ secrets.DOCKER_USERNAME }}
+         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}    
+      - name: Push image
+        run: docker push mastermole/my_app:${{ env.Version_name }}.${{ env.PACKAGE_NAME }}
+            
       
