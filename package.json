@@ -1,29 +1,5 @@
 {
-  "name": "action-set-json-field",
-  "version": "1.0.0",
-  "description": "This GitHub Action helps edit a JSON file and set a field value",
-  "main": "dist/index.js",
-  "scripts": {
-    "build": "ncc build src/main.js",
-    "test": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jossef/action-set-json-field"
-  },
-  "keywords": [
-    "actions",
-    "set json",
-    "edit json",
-    "node"
-  ],
-  "author": "Jossef Harush",
-  "license": "MIT",
-  "dependencies": {
-    "@actions/core": "^1.2.3",
-    "jest": "^28.1.1"
-  },
-  "devDependencies": {
-    "@zeit/ncc": "^0.20.4"
+  "release": {
+    "branches": ["main", "web_app", "sash"]
   }
 }
