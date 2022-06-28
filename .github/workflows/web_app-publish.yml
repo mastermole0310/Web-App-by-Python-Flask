@@ -23,10 +23,8 @@ jobs:
         echo '::set-output name=ARTEFACT_VERSION::$(git describe --long --always | sed -r "s/-(([^-]*-){1}[^-]*)$/.\\1/")'
     - name: Build image
       run: |
-        docker build --build-arg Build=${{ steps.version-generator.outputs.ARTEFACT_VERSION }} \
-        -t mastermole0310/Web_App_by_Python_Flask:${{ steps.version-generator.outputs.ARTEFACT_VERSION }} .
-        docker tag mastermole0310/Web_App_by_Python_Flask:${{ steps.version-generator.outputs.ARTEFACT_VERSION }} \
-        mastermole0310/Web_App_by_Python_Flask
+        docker build . --tag mastermole/my_best_server:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
+        
     - name: Login to DockerHub
       uses: docker/login-action@v1 
       with:
