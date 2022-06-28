@@ -23,7 +23,7 @@ jobs:
       id: semantic_release_info
       uses: jossef/action-semantic-release-info@v1
       env: |
-        Package_name: "${{ github.sha }}"
+        PACKAGE_NAME: "${{ github.sha }}"
         Version_name: "${{ steps.semantic_release_info.outputs.git_tag }}
         
         
