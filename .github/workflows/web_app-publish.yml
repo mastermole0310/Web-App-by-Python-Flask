@@ -24,15 +24,23 @@ jobs:
       uses: jossef/action-semantic-release-info@v1
       env: |
         PACKAGE_NAME: "${{ github.sha }}"
-        Version_name: "${{ steps.semantic_release_info.outputs.git_tag }}
         
+    - name: Setup Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 16.x
+    
+    - name: Build
+      run: |
+        npm ci --only=prod
+        npm run build
         
     - name: Update package.json version
       uses: jossef/action-set-json-field@v2
       with:
         file: my_json.json
         field: Version
-        value: ${{ env.Version_name }}.${{ env.PACKAGE_NAME }}
+        value: ${{ steps.semantic_release_info.outputs.git_tag }}
         
     - name: Build image
       run: docker build . --tag mastermole/my_app:${{ env.Version_name }}.${{ env.PACKAGE_NAME }}
