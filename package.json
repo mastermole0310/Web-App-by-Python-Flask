@@ -1,0 +1,5 @@
+{
+  "release": {
+    "branches": ["main", "sash", "web_app"]
+  }
+}
