@@ -20,7 +20,7 @@ jobs:
       uses: rez0n/actions-github-release@main
       id: node_release
       env:
-        token: ${{ REPO_ACCESS_TOKEN_WEB_APP }}
+        token: ${{ secrets.REPO_ACCESS_TOKEN_WEB_APP }}
         repository: "mastermole0310/Web-App-by-Python-Flask"
         type: "stable"
         
@@ -29,7 +29,7 @@ jobs:
       with:
         file: my_json.json
         field: Version
-        value: ${{ REPO_ACCESS_TOKEN_WEB_APP }}
+        value: ${{ secrets.REPO_ACCESS_TOKEN_WEB_APP }}
         
     - name: Build image
       run: docker build . --tag mastermole/my_app:${{ env.Version_name }}.${{ env.PACKAGE_NAME }}
