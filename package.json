@@ -1,6 +1,6 @@
 {
-  "name": "my_app"
+  "name": "my-ng-library",
   "version": "0.0.0-semantically-released",
-  "release": "branches": ["main", "web_app", "sash"]
-  
+  "repository": "[https://github.com/mastermole0310/Web-App-by-Python-Flask.git]",
+  "private": true,
 }
