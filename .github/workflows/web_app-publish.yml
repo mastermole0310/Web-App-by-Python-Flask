@@ -38,7 +38,8 @@ jobs:
       with:
          file: my_json.json
          field: Version
-         value: ${{ secrets.REPO_ACCESS_TOKEN_WEB_APP }}
+      env: 
+        GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN_WEB_APP }}
         
     - name: Build image
       run: docker build . --tag mastermole/my_app:${{ env.Version_name }}.${{ env.PACKAGE_NAME }}
