@@ -23,6 +23,12 @@ jobs:
       run: |
         ARTEFACT_VERSION=$(git describe --long --always | sed -r "s/-(([^-]*-){1}[^-]*)$/.\\1/") 
         echo '::set-output name=ARTEFACT_VERSION::$(git describe --long --always | sed -r "s/-(([^-]*-){1}[^-]*)$/.\\1/")'
+    - name: Update package.json version
+      uses: jossef/action-set-json-field@v2
+      with:
+        file: my_json.json
+        field: version
+        value: ${{ steps.version-generator.outputs.ARTEFACT_VERSION }}.${{ github.sha }}    
     - name: Build image
       run: |
         docker build . --tag mastermole/my_app:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}.${{ github.sha }}
