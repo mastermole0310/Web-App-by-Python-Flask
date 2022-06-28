@@ -43,5 +43,5 @@ jobs:
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}    
     - name: Push image
       run: |
-        docker push mastermole/my_app:${{ env.value }}.${{ env.PACKAGE_NAME }}
+        docker push mastermole/my_app:${{ env.PACKAGE_NAME }}
       
