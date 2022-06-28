@@ -1,4 +1,5 @@
 {
+  "name": "my_app"
   "release": {
     "branches": ["main", "web_app", "sash"]
   }
