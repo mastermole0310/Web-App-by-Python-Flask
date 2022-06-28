@@ -44,8 +44,8 @@ jobs:
          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
        
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag mastermole/web_app:${{ env.VERSION_FRAGMENT }}.${{ env.DEPLOY_PACKAGE_NAME }}.
+        run: docker build . --file Dockerfile --tag mastermole/web_app:${{ env.VERSION_FRAGMENT }}.${{ env.DEPLOY_PACKAGE_NAME }}
    
     
       - name: Push to the DockerHub
-        run: docker push mastermole/web_app:${{ GitVersion_MajorMinorPatch }}
+        run: docker push mastermole/web_app:${{ env.VERSION_FRAGMENT }}.${{ env.DEPLOY_PACKAGE_NAME }}
