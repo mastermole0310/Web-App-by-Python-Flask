@@ -15,35 +15,23 @@ on:
       - 'sash'
 jobs:
   build:
-     name: Create Release
      runs-on: ubuntu-latest
      steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          DEPLOY_PACKAGE_NAME: ${{ github.sha }} 
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body: |
-            Changes in this Release
-            - First Change
-            - Second Change
-          draft: false
-          prerelease: false
+     - uses: actions/checkout@v1
+     - name: Get Git Version
+       uses: docker://gittools/gitversion:5.0.2-linux-centos-7-netcoreapp2.2
+       with:
+         args: /github/workspace /nofetch /exec /bin/sh /execargs "-c \"echo $GitVersion_MajorMinorPatch > /github/workspace/my_json.json\""
   
-      - name: Login to DockerHub
-        uses: docker/login-action@v1 
-        with:
+     - name: Login to DockerHub
+       uses: docker/login-action@v1 
+       with:
          username: ${{ secrets.DOCKER_USERNAME }}
          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
        
-      - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag mastermole/web_app:${{ github.ref }}.${{ env.DEPLOY_PACKAGE_NAME }}
+     - name: Build the Docker image
+       run: docker build . --file Dockerfile --tag mastermole/web_app:${{ GitVersion_MajorMinorPatch }}
    
     
-      - name: Push to the DockerHub
-        run: docker push mastermole/web_app:${{ github.ref }}.${{ env.DEPLOY_PACKAGE_NAME }}
+     - name: Push to the DockerHub
+       run: docker push mastermole/web_app:${{ GitVersion_MajorMinorPatch }}
