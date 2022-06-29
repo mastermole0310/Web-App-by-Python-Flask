@@ -25,11 +25,8 @@ jobs:
     - name: Generate semver2
       id: version-generator2
       run: |
-        git describe --long --always
-        
-    
-      
-      
+        ARTEFACT_VERSION=$(git describe --long --always);
+        echo $ARTEFACT_VERSION
       
       
     - name: Update package.json version
