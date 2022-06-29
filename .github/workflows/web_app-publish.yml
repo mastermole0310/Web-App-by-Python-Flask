@@ -38,5 +38,5 @@ jobs:
       with: 
          file: my_json.json
          field: Version
-         value: ${{ steps.version-generator.outputs.ARTEFACT_VERSION }}  
+         value: "12358"
     
