@@ -34,8 +34,8 @@ jobs:
         
     - name: Build image 
       run: |
-        using: 'docker/dockerfile:1'
-        image: 'Dockerfile'
+        using: 'docker'
+        image: 'Dockerfile:1'
         args:
           - ${{  steps.version-generator.outputs.ARTEFACT_VERSION }}
    
