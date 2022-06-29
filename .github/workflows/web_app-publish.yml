@@ -22,12 +22,7 @@ jobs:
         ARTEFACT_VERSION=$(git describe --long --always | sed -r "s/-(([^-]*-){1}[^-]*)$/.\\1/") 
         echo '::set-output name=ARTEFACT_VERSION::$(git describe --long --always | sed -r "s/-(([^-]*-){1}[^-]*)$/.\\1/")'
     
-    - name: Generate semver2
-      id: version-generator2
-      run: |
-        export ARTEFACT_VERSION=$(git describe --long --always);
-        
-      
+   
     - name: Generate semver3
       id: version-generator3
       run: |
