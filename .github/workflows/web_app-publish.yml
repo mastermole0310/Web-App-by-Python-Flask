@@ -35,7 +35,7 @@ jobs:
       with: 
          file: my_json.json
          field: Version
-         value: ${{ format }}
+         value: ${ v.${major}.${minor}.${patch}-prerelease${increment} }
        
         
     - name: Build image 
