@@ -39,7 +39,7 @@ jobs:
        
         
     - name: Build image 
-      run: docker build . --tag mastermole/my_app:${ v.${major}.${minor}.${patch}-prerelease${increment} }
+      run: docker build . --tag mastermole/my_app:${{ major }}.${{ minor }}.${{ patch }}-prerelease${{ increment }}
         
     - name: Login to DockerHub
       uses: docker/login-action@v1 
