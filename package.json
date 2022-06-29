@@ -1,8 +1,8 @@
 {
   "release": {
-    "branches": ["master", "next"]
-  }  
+    "branches": ["main", "sash"]
+  }
   "name": {
-    "my_app"}
+    "my_app"
   }
 }
