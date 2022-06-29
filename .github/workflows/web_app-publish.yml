@@ -33,7 +33,7 @@ jobs:
        
         
     - name: Build image 
-      run:  docker build . --tag mastermole/my_best_server:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
+      run:  docker build . --tag mastermole/my_app:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
             
         
     - name: Login to DockerHub
@@ -43,6 +43,6 @@ jobs:
          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}    
          
     - name: Push image
-      run: docker push  mastermole/my_app:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
+      run: docker push mastermole/my_app:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
             
       
