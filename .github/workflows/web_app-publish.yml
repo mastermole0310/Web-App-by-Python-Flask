@@ -4,7 +4,6 @@ on:
     branches:
       - 'main'
       - 'web_app'
-      - 'sash'
   pull_request:
     branches:
       - 'main'
