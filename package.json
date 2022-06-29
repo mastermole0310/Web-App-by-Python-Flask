@@ -1,6 +1,1 @@
-{
-  "name": "my-ng-library",
-  "version": "0.0.0-semantically-released",
-  "repository": "[https://github.com/mastermole0310/Web-App-by-Python-Flask.git]",
-  "private": true,
-}
+{"name": "my-ng-library", "version": "0.0.0-semantically-released"}
