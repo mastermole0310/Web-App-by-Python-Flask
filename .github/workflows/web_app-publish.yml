@@ -37,7 +37,7 @@ jobs:
       with: 
          file: my_json.json
          field: Version
-       env: ${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
+         value: ${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
        
         
     - name: Build image
