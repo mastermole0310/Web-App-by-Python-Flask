@@ -31,5 +31,5 @@ jobs:
     - name: Generate semver3
       id: version-generator3
       run: |
-        echo ${{ steps.version-generator2.outputs.ARTEFACT_VERSION }}
+        echo ${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
     
