@@ -1,8 +1,4 @@
 {
-  "release": {
-    "branches": ["main", "sash"]
-  }
-  "name": {
-    "my_app"
-  }
+  "branches": ["main", "sash"]
+  "name": "my_app"
 }
