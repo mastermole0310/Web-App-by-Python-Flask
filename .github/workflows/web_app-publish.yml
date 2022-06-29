@@ -32,15 +32,12 @@ jobs:
          value: steps.version-generator.outputs.ARTEFACT_VERSION
        
         
-    - name: Build image 
+    - name: Build image
       run: |
-        using: 'docker'
-        image: 'Dockerfile:1'
-        args:
-          - ${{  steps.version-generator.outputs.ARTEFACT_VERSION }}
-   
+        docker build --build-arg Build=${{ steps.version-generator.outputs.ARTEFACT_VERSION }} \
+        -t mastermole/my_app:${{ steps.version-generator.outputs.ARTEFACT_VERSION }} .
         
-            
+       
         
     - name: Login to DockerHub
       uses: docker/login-action@v1 
