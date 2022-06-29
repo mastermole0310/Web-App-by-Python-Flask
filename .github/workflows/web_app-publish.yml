@@ -33,7 +33,7 @@ jobs:
        
         
     - name: Build image 
-      run:  docker build -t mastermole/my_app:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
+      run:  docker build . --tag mastermole/my_best_server:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
             
         
     - name: Login to DockerHub
