@@ -22,13 +22,22 @@ jobs:
         ARTEFACT_VERSION=$(git describe --long --always | sed -r "s/-(([^-]*-){1}[^-]*)$/.\\1/") 
         echo '::set-output name=ARTEFACT_VERSION::$(git describe --long --always | sed -r "s/-(([^-]*-){1}[^-]*)$/.\\1/")'
     
+    - name: Generate semver2
+      id: version-generator2
+      run: |
+        git describe --long --always
+        
+    
+      
+      
+      
       
     - name: Update package.json version
       uses: jossef/action-set-json-field@v2
       with: 
          file: my_json.json
          field: Version
-         env: ${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
+       env: ${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
        
         
     - name: Build image
