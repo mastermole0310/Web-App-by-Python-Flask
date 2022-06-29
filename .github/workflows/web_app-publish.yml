@@ -25,8 +25,8 @@ jobs:
     - name: Generate semver2
       id: version-generator2
       run: |
-        ARTEFACT_VERSION=$(git describe --long --always);
-        echo $ARTEFACT_VERSION
+        export ARTEFACT_VERSION=$(git describe --long --always);
+        
       
     - name: Generate semver3
       id: version-generator3
@@ -38,5 +38,5 @@ jobs:
       with: 
          file: my_json.json
          field: Version
-         value: echo ${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
+         value:  ${{ env.ARTEFACT_VERSION }}
     
