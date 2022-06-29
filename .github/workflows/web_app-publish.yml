@@ -35,8 +35,8 @@ jobs:
       with: 
          file: my_json.json
          field: Version
-      env:
-       Version: ${{ format }}
+         value: ${{ format }}
+       
         
     - name: Build image 
       run: docker build . --tag mastermole/my_app:v.${major}.${minor}.${patch}-prerelease${increment}
