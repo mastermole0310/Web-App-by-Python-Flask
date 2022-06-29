@@ -1,1 +1,1 @@
-{ "branches": "main", "name": "my-ng-library", "version": "0.0.0-semantically-released"}
+{"release": "branches": ["main", "sash"], "name": "my-ng-library", "version": "0.0.0-semantically-released"}
