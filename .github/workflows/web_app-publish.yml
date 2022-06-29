@@ -31,6 +31,5 @@ jobs:
     - name: Generate semver3
       id: version-generator3
       run: |
-        ARTEFACT_VERSION=$(git describe --long --always);
         echo $ARTEFACT_VERSION
     
