@@ -27,17 +27,17 @@ jobs:
         tag_prefix: "v"
         major_pattern: "BREAKING CHANGE"
         minor_pattern: "FEAT:"
-        format: "v.${major}.${minor}.${patch}-prerelease${increment}"
-      
+        format: "v.${{ major }}.${{ minor }}.${{ patch }}-prerelease${{ increment }}"
+        
       
     - name: Update package.json version
       uses: jossef/action-set-json-field@v2
       with:
          file: my_json.json
          field: Version
-         value: "v.${major}.${minor}.${patch}-prerelease${increment}"
+         value: "v.${{ major }}.${{ minor }}.${{ patch }}-prerelease${{ increment }}"
         
-    - name: Build image
+    - name: Build image 
       run: docker build . --tag mastermole/my_app:v.${major}.${minor}.${patch}-prerelease${increment}
         
     - name: Login to DockerHub
