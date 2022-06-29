@@ -19,17 +19,15 @@ jobs:
     -
       uses: actions/checkout@v2
 
-    - name: Release
-      uses: cycjimmy/semantic-release-action@v2
+    - name: Semantic versioning
+      id: versioning
+      uses: PaulHatch/semantic-version@v4.0.2
       with:
-          semantic_version: 18.0.0
-          extra_plugins: |
-            @semantic-release/changelog@6.0.0
-            @semantic-release/git@10.0.0
-            conventional-changelog-conventionalcommits@4.6.3
-            conventional-changelog-eslint@3.0.9
-      env:
-          GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN_WEB_APP }}
+        branch: main
+        tag_prefix: "v"
+        major_pattern: "BREAKING CHANGE"
+        minor_pattern: "FEAT:"
+        format: "v.${major}.${minor}.${patch}-prerelease${increment}"
       
       
         
