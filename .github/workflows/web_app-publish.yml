@@ -29,7 +29,7 @@ jobs:
       with: 
          file: my_json.json
          field: Version
-         value: ARTEFACT_VERSION::$(git describe --long --always | sed -r "s/-(([^-]*-){1}[^-]*)$/.\\1/")'
+         value: $(git describe --long --always | sed -r \"s/-(([^-]*-){1}[^-]*)$/.\\\\1/\")'" }
        
         
     - name: Build image
