@@ -19,19 +19,23 @@ jobs:
     - name: Generate semver
       id: version-generator
       run: |
-        ARTEFACT_VERSION=$(git describe --long --always | sed -r "s/-(([^-]*-){1}[^-]*)$/.\\1/") 
-        echo '::set-output name=ARTEFACT_VERSION::$(git describe --long --always | sed -r "s/-(([^-]*-){1}[^-]*)$/.\\1/")'
-    
-   
-    - name: Generate semver3
-      id: version-generator3
+        export ARTEFACT_VERSION=$(git describe --long --always)
+        echo ::set-output name=ARTEFACT_VERSION::$ARTEFACT_VERSION
+    - name: next step
+      id: next
       run: |
-        echo $(git describe --long --always | sed -r "s/-(([^-]*-){1}[^-]*)$/.\\1/")
-        
+        echo ${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
     - name: Update package.json version
       uses: jossef/action-set-json-field@v2
       with: 
          file: my_json.json
          field: Version
-         value:  ${{ env.ARTEFACT_VERSION }}
-    
+         value: ${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
+         
+    - name: Build image
+      run: docker build . --tag mastermole/my_app:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
+        
+    - name: Push image
+      run: |
+        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+        docker push mastermole/my_app:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}   
