@@ -38,6 +38,11 @@ jobs:
          file: my_json.json
          field: Version
          value: ${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
+     - name: update release
+       id: update_release
+       uses: tubone24/update_release@v1.0
+       env:
+          REPO_ACCESS_TOKEN_WEB_APP: ${{ github.token }}    
          
      - name: Build image
        run: docker build . --tag mastermole/my_app:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
