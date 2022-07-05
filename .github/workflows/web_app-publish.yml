@@ -35,8 +35,10 @@ jobs:
      - name: update release
        id: update_release
        uses: tubone24/update_release@v1.0
+       env:
+          GITHUB_TOKEN: ${{ secrets.github_token }}
        with:
-        token: ${{secrets.github_token}}
+          body: test_body # new body text
       
      
      - name: Update package.json version
