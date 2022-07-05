@@ -32,14 +32,7 @@ jobs:
        run: |
         echo ${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
         
-     - name: update release
-       id: update_release
-       uses: tubone24/update_release@v1.0
-       env:
-          GITHUB_TOKEN: ${{ secrets.github_token }}
-       with:
-          body: test_body # new body text
-      
+           
      
      - name: Update package.json version
        uses: jossef/action-set-json-field@v2
