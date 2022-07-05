@@ -9,7 +9,7 @@ with open('my_json.json', 'r') as myfile:
 
 @app.route("/version")
 def index():
-    return Response(data, mimetype='application/json')
+    return render_template(data, mimetype='application/json')
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
