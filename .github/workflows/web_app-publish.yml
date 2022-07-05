@@ -13,29 +13,36 @@ jobs:
    build:
     runs-on: ubuntu-latest
     steps:  
-    -
-      uses: actions/checkout@v2
+  
+     - uses: actions/checkout@v3
+       with:
+        fetch-depth: 0
 
-    - name: Generate semver
-      id: version-generator
-      run: |
+
+
+     - name: Generate semver
+       id: version-generator
+       run: |
         export ARTEFACT_VERSION=$(git describe --long --always)
         echo ::set-output name=ARTEFACT_VERSION::$ARTEFACT_VERSION
-    - name: next step
-      id: next
-      run: |
+    
+    
+     - name: next step
+       id: next
+       run: |
         echo ${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
-    - name: Update package.json version
-      uses: jossef/action-set-json-field@v2
-      with: 
+     
+     - name: Update package.json version
+       uses: jossef/action-set-json-field@v2
+       with: 
          file: my_json.json
          field: Version
          value: ${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
          
-    - name: Build image
-      run: docker build . --tag mastermole/my_app:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
+     - name: Build image
+       run: docker build . --tag mastermole/my_app:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
         
-    - name: Push image
-      run: |
+     - name: Push image
+       run: |
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
         docker push mastermole/my_app:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}   
