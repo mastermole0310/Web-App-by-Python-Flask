@@ -10,7 +10,7 @@ on:
       - 'web_app'
       - 'sash'
 env:
-  AWS_REGION: us-east-2
+  AWS_REGION: us-east-1
   ECR_REPOSITORY: my_app_flask
   ECS_SERVICE: my_web_service      
   ECS_CLUSTER: my_web_cluster
