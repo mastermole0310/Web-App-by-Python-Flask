@@ -9,6 +9,7 @@ on:
     branches:
       - 'main'
       - 'web_app'
+      - 'sash'
     
 env:
   AWS_REGION: us-east-1
