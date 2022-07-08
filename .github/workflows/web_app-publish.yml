@@ -11,7 +11,7 @@ on:
       - 'sash'
 env:
   AWS_REGION: us-east-1
-  ECR_REPOSITORY: my_app
+  ECR_REPOSITORY: new-my-app
   ECS_SERVICE: my_web_service      
   ECS_CLUSTER: my_web_cluster
   ECS_TASK_DEFINITION: task-definition
@@ -60,6 +60,7 @@ jobs:
        id: build-image
        env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: new-my-app
           IMAGE_TAG: ${{ github.sha }}
        run: |
             docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
