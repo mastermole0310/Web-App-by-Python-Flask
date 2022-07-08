@@ -63,7 +63,7 @@ jobs:
           ECR_REPOSITORY: new-my-app
        run: |
             docker build -t ${{ steps.version-generator.outputs.ARTEFACT_VERSION }} .
-            docker push $ECR_REGISTRY/$ECR_REPOSITORY:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
+            docker push $ECR_REGISTRY/$ECR_REPOSITORY
             echo "::set-output name=image::${{ steps.version-generator.outputs.ARTEFACT_VERSION }}"
             
      
