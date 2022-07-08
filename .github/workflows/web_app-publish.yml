@@ -13,7 +13,7 @@ env:
   AWS_REGION: us-east-1
   ECS_SERVICE: my_web_service      
   ECS_CLUSTER: my_web_cluster
-  ECS_TASK_DEFINITION: task-definition
+  ECS_TASK_DEFINITION: my_json.json
                                                
   CONTAINER_NAME: my_app_flask           
                                                    
