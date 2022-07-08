@@ -8,7 +8,7 @@ on:
     branches:
       - 'main'
       - 'web_app'
-      - 'sash'
+    
 env:
   AWS_REGION: us-east-1
   ECS_SERVICE: my_web_service      
