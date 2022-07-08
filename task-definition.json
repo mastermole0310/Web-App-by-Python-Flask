@@ -3,7 +3,7 @@
   "executionRoleArn": "a.smirnov",
   "containerDefinitions": [
       {
-          "name": "my_app",
+          "name": "my_app_flask",
           "image": "745507191446.dkr.ecr.us-east-1.amazonaws.com/new-my-app:9f0d82ede0ddf3ddddd3d34e9676a6342a71d9d2",
           "cpu": 512,
           "portMappings": [
