@@ -1,6 +1,6 @@
 {
   "family": "my_app",
-  "executionRoleArn": "arn:aws:a.smirnov::745507191446:role/ecsTaskExecutionRole",
+  "executionRoleArn": "ecsTaskExecutionRole",
   "containerDefinitions": [
       {
           "name": "my_app_flask",
