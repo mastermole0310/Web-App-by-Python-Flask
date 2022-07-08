@@ -11,7 +11,6 @@ on:
       - 'sash'
 env:
   AWS_REGION: us-east-1
-  ECR_REPOSITORY: new-my-app
   ECS_SERVICE: my_web_service      
   ECS_CLUSTER: my_web_cluster
   ECS_TASK_DEFINITION: task-definition
@@ -54,7 +53,7 @@ jobs:
 
      - name: Login to Amazon ECR
        id: login-ecr
-       uses: aws-actions/amazon-ecr-login@1
+       uses: aws-actions/amazon-ecr-login@v1
 
      - name: Build, tag, and push image to Amazon ECR
        id: build-image
