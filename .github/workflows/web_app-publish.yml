@@ -16,7 +16,7 @@ env:
   ECS_CLUSTER: my_web_cluster
   ECS_TASK_DEFINITION: task-definition
                                                
-  CONTAINER_NAME: my_app           
+  CONTAINER_NAME: my_app_flask           
                                                    
 jobs:
    build:
