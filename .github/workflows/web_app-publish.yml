@@ -13,7 +13,6 @@ env:
   AWS_REGION: us-east-1
   ECS_SERVICE: my_web_service      
   ECS_CLUSTER: my_web_cluster
-  ECS_TASK_DEFINITION: my_json.json
                                                
   CONTAINER_NAME: my_app_flask           
                                                    
@@ -65,12 +64,16 @@ jobs:
             docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
             docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
             echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+            
+     - name: Download task definition
+       run: |
+        aws ecs describe-task-definition --task-definition my-task-definition-family --query taskDefinition > task-definition.json      
           
      - name: Fill in the new image ID in the Amazon ECS task definition
        id: task-def
        uses: aws-actions/amazon-ecs-render-task-definition@97587c9d45a4930bf0e3da8dd2feb2a463cf4a3a
        with:
-          task-definition: ${{ env.ECS_TASK_DEFINITION }}
+          task-definition: .github/workflows/my_json.json
           container-name: ${{ env.CONTAINER_NAME }}
           image: ${{ steps.build-image.outputs.image }}
 
