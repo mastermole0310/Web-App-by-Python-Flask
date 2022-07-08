@@ -64,7 +64,7 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           IMAGE_TAG: ${{ github.sha }}
        run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:${{ steps.version-generator.outputs.ARTEFACT_VERSION }} .
+          docker build -t ${{ steps.version-generator.outputs.ARTEFACT_VERSION }} .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}"
 
