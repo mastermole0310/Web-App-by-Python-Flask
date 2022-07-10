@@ -1,5 +1,6 @@
 {
   "family": "my_app",
+  "taskRoleArn": "arn:aws:iam::745507191446:role/ecsTaskExecutionRole"
   "executionRoleArn": "arn:aws:iam::745507191446:role/ecsTaskExecutionRole",
   "containerDefinitions": [
       {
