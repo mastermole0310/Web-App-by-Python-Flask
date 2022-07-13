@@ -1,48 +1,107 @@
 {
-    "requiresCompatibilities": [
-        "EC2"
-    ],
-    "inferenceAccelerators": [],
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:745507191446:task-definition/task_definition:1",
     "containerDefinitions": [
         {
             "name": "my_app_flask",
             "image": "745507191446.dkr.ecr.us-east-1.amazonaws.com/new-my-app:latest",
-            "memory": "256",
-            "resourceRequirements": null,
-            "essential": true,
+            "cpu": 0,
+            "links": [],
             "portMappings": [
                 {
-                    "hostPort": "8081",
-                    "containerPort": "5000",
+                    "containerPort": 5000,
+                    "hostPort": 5000,
                     "protocol": "tcp"
                 }
             ],
-            "environment": [
-                {
-                    "name": "MYSECRET",
-                    "value": "my-aws-super-secret"
-                }
-            ],
-            "secrets": null,
-            "mountPoints": null,
-            "volumesFrom": null,
-            "hostname": null,
-            "user": null,
-            "workingDirectory": null,
-            "extraHosts": null,
-            "logConfiguration": null,
-            "ulimits": null,
-            "dockerLabels": null,
-            "dependsOn": null,
-            "repositoryCredentials": {
-                "credentialsParameter": ""
-            }
+            "essential": true,
+            "entryPoint": [],
+            "command": [],
+            "environment": [],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "secrets": [],
+            "dnsServers": [],
+            "dnsSearchDomains": [],
+            "extraHosts": [],
+            "dockerSecurityOptions": [],
+            "dockerLabels": {},
+            "ulimits": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-create-group": "true",
+                    "awslogs-group": "/ecs/task_definition",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "ecs"
+                },
+                "secretOptions": []
+            },
+            "systemControls": []
         }
     ],
+    "family": "task_definition",
+    "taskRoleArn": "arn:aws:iam::745507191446:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::745507191446:role/ecsTaskExecutionRole",
+    "networkMode": "awsvpc",
+    "revision": 1,
     "volumes": [],
-    "networkMode": null,
-    "memory": null,
-    "cpu": null,
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.17"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+        }
+    ],
     "placementConstraints": [],
-    "family": "demo-node-task-definition"
+    "compatibilities": [
+        "EC2"
+    ],
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "cpu": "1024",
+    "memory": "3072",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "registeredAt": "2022-07-13T16:28:47.053Z",
+    "registeredBy": "arn:aws:iam::745507191446:user/a.smirnov",
+    "tags": [
+        {
+            "key": "ecs:taskDefinition:createdFrom",
+            "value": "ecs-console-v2"
+        },
+        {
+            "key": "ecs:taskDefinition:stackId",
+            "value": "arn:aws:cloudformation:us-east-1:745507191446:stack/ECS-Console-V2-TaskDefinition-6bdb9eeb-5bbd-4302-8617-3b5660c1151a/dad41400-02c8-11ed-b05a-0e8abe1bfeef"
+        }
+    ]
 }
