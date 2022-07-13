@@ -13,8 +13,8 @@ on:
     
 env:
   AWS_REGION: us-east-1
-  ECS_SERVICE: my_web_service      
-  ECS_CLUSTER: my_cluster1
+  ECS_SERVICE: my_service      
+  ECS_CLUSTER: cluster1
                                                
   CONTAINER_NAME: my_app_flask           
                                                    
