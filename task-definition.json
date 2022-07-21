@@ -1,10 +1,11 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:745507191446:task-definition/task_definition:3",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:745507191446:task-definition/task_definition1:5",
     "containerDefinitions": [
         {
             "name": "my_app_flask",
             "image": "745507191446.dkr.ecr.us-east-1.amazonaws.com/new-my-app:latest",
             "cpu": 0,
+            "memory": 256,
             "portMappings": [
                 {
                     "containerPort": 80,
@@ -20,18 +21,18 @@
                 "logDriver": "awslogs",
                 "options": {
                     "awslogs-create-group": "true",
-                    "awslogs-group": "/ecs/task_definition",
+                    "awslogs-group": "/ecs/task_definition1",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs"
                 }
             }
         }
     ],
-    "family": "task_definition",
+    "family": "task_definition1",
     "taskRoleArn": "arn:aws:iam::745507191446:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::745507191446:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 3,
+    "revision": 5,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -77,7 +78,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2022-07-13T17:31:22.632Z",
+    "registeredAt": "2022-07-21T16:16:28.217Z",
     "registeredBy": "arn:aws:iam::745507191446:user/a.smirnov",
     "tags": [
         {
@@ -86,7 +87,7 @@
         },
         {
             "key": "ecs:taskDefinition:stackId",
-            "value": "arn:aws:cloudformation:us-east-1:745507191446:stack/ECS-Console-V2-TaskDefinition-6bdb9eeb-5bbd-4302-8617-3b5660c1151a/dad41400-02c8-11ed-b05a-0e8abe1bfeef"
+            "value": "arn:aws:cloudformation:us-east-1:745507191446:stack/ECS-Console-V2-TaskDefinition-8e4e8545-5997-4393-97f3-6cecb10fc7b9/3b1bac40-0901-11ed-93ce-0a724ea13329"
         }
     ]
 }
