@@ -1,14 +1,14 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:745507191446:task-definition/task_definition1:1",
     "containerDefinitions": [
         {
             "name": "my_app_flask",
             "image": "745507191446.dkr.ecr.us-east-1.amazonaws.com/new-my-app:latest",
+            "memory": "256",
             "cpu": 0,
             "links": [],
             "portMappings": [
                 {
-                    "containerPort": 80,
+                    "containerPort": 5000,
                     "hostPort": 80,
                     "protocol": "tcp"
                 }
@@ -44,7 +44,6 @@
     "taskRoleArn": "arn:aws:iam::745507191446:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::745507191446:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 1,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
