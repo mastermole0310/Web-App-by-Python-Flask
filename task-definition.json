@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:745507191446:task-definition/task_definition:1",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:745507191446:task-definition/task_definition1:1",
     "containerDefinitions": [
         {
             "name": "my_app_flask",
@@ -8,8 +8,8 @@
             "links": [],
             "portMappings": [
                 {
-                    "containerPort": 5000,
-                    "hostPort": 5000,
+                    "containerPort": 80,
+                    "hostPort": 80,
                     "protocol": "tcp"
                 }
             ],
@@ -31,7 +31,7 @@
                 "logDriver": "awslogs",
                 "options": {
                     "awslogs-create-group": "true",
-                    "awslogs-group": "/ecs/task_definition",
+                    "awslogs-group": "/ecs/task_definition1",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs"
                 },
@@ -40,7 +40,7 @@
             "systemControls": []
         }
     ],
-    "family": "task_definition",
+    "family": "task_definition1",
     "taskRoleArn": "arn:aws:iam::745507191446:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::745507191446:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
@@ -81,7 +81,8 @@
     ],
     "placementConstraints": [],
     "compatibilities": [
-        "EC2"
+        "EC2",
+        "FARGATE"
     ],
     "requiresCompatibilities": [
         "EC2"
@@ -92,7 +93,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2022-07-13T16:28:47.053Z",
+    "registeredAt": "2022-07-21T14:27:28.065Z",
     "registeredBy": "arn:aws:iam::745507191446:user/a.smirnov",
     "tags": [
         {
@@ -101,7 +102,7 @@
         },
         {
             "key": "ecs:taskDefinition:stackId",
-            "value": "arn:aws:cloudformation:us-east-1:745507191446:stack/ECS-Console-V2-TaskDefinition-6bdb9eeb-5bbd-4302-8617-3b5660c1151a/dad41400-02c8-11ed-b05a-0e8abe1bfeef"
+            "value": "arn:aws:cloudformation:us-east-1:745507191446:stack/ECS-Console-V2-TaskDefinition-8e4e8545-5997-4393-97f3-6cecb10fc7b9/3b1bac40-0901-11ed-93ce-0a724ea13329"
         }
     ]
 }
