@@ -14,7 +14,7 @@ on:
 env:
   AWS_REGION: us-east-1
   ECS_SERVICE: my_service      
-  ECS_CLUSTER: cluster1
+  ECS_CLUSTER: cluster
                                                
   CONTAINER_NAME: my_app_flask           
                                                    
