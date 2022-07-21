@@ -1,107 +1,43 @@
 {
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "inferenceAccelerators": [],
     "containerDefinitions": [
         {
             "name": "my_app_flask",
             "image": "745507191446.dkr.ecr.us-east-1.amazonaws.com/new-my-app:latest",
             "memory": "256",
-            "cpu": 0,
-            "links": [],
+            "resourceRequirements": null,
+            "essential": true,
             "portMappings": [
                 {
-                    "containerPort": 80,
-                    "hostPort": 80,
+                    "hostPort": "80",
+                    "containerPort": "80",
                     "protocol": "tcp"
                 }
             ],
-            "essential": true,
-            "entryPoint": [],
-            "command": [],
-            "environment": [],
-            "environmentFiles": [],
-            "mountPoints": [],
-            "volumesFrom": [],
-            "secrets": [],
-            "dnsServers": [],
-            "dnsSearchDomains": [],
-            "extraHosts": [],
-            "dockerSecurityOptions": [],
-            "dockerLabels": {},
-            "ulimits": [],
-            "logConfiguration": {
-                "logDriver": "awslogs",
-                "options": {
-                    "awslogs-create-group": "true",
-                    "awslogs-group": "/ecs/task_definition1",
-                    "awslogs-region": "us-east-1",
-                    "awslogs-stream-prefix": "ecs"
-                },
-                "secretOptions": []
-            },
-            "systemControls": []
+            "secrets": null,
+            "mountPoints": null,
+            "volumesFrom": null,
+            "hostname": null,
+            "user": null,
+            "workingDirectory": null,
+            "extraHosts": null,
+            "logConfiguration": null,
+            "ulimits": null,
+            "dockerLabels": null,
+            "dependsOn": null,
+            "repositoryCredentials": {
+                "credentialsParameter": ""
+            }
         }
     ],
-    "family": "task_definition1",
-    "taskRoleArn": "arn:aws:iam::745507191446:role/ecsTaskExecutionRole",
-    "executionRoleArn": "arn:aws:iam::745507191446:role/ecsTaskExecutionRole",
-    "networkMode": "awsvpc",
     "volumes": [],
-    "status": "ACTIVE",
-    "requiresAttributes": [
-        {
-            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
-        },
-        {
-            "name": "ecs.capability.execution-role-awslogs"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.ecr-auth"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.17"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.task-iam-role"
-        },
-        {
-            "name": "ecs.capability.execution-role-ecr-pull"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
-        },
-        {
-            "name": "ecs.capability.task-eni"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
-        }
-    ],
+    "networkMode": null,
+    "memory": null,
+    "cpu": null,
     "placementConstraints": [],
-    "compatibilities": [
-        "EC2",
-        "FARGATE"
-    ],
-    "requiresCompatibilities": [
-        "EC2"
-    ],
-    "cpu": "1024",
-    "memory": "3072",
-    "runtimePlatform": {
-        "cpuArchitecture": "X86_64",
-        "operatingSystemFamily": "LINUX"
-    },
-    "registeredAt": "2022-07-21T14:27:28.065Z",
-    "registeredBy": "arn:aws:iam::745507191446:user/a.smirnov",
-    "tags": [
-        {
-            "key": "ecs:taskDefinition:createdFrom",
-            "value": "ecs-console-v2"
-        },
-        {
-            "key": "ecs:taskDefinition:stackId",
-            "value": "arn:aws:cloudformation:us-east-1:745507191446:stack/ECS-Console-V2-TaskDefinition-8e4e8545-5997-4393-97f3-6cecb10fc7b9/3b1bac40-0901-11ed-93ce-0a724ea13329"
-        }
-    ]
+    "family": "demo-node-task-definition"
 }
+
