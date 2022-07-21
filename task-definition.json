@@ -5,7 +5,7 @@
     "inferenceAccelerators": [],
     "containerDefinitions": [
         {
-            "name": "sample-node-container",
+            "name": "my_app_flask",
             "image": "745507191446.dkr.ecr.us-east-1.amazonaws.com/new-my-app:latest",
             "memory": "256",
             "resourceRequirements": null,
