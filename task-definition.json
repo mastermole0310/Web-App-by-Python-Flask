@@ -1,38 +1,50 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:745507191446:task-definition/task_definition1:5",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:745507191446:task-definition/definition-options:1",
     "containerDefinitions": [
         {
             "name": "my_app_flask",
             "image": "745507191446.dkr.ecr.us-east-1.amazonaws.com/new-my-app:latest",
             "cpu": 0,
-            "memory": 256,
+            "links": [],
             "portMappings": [
                 {
-                    "containerPort": 80,
+                    "containerPort": 5000,
                     "hostPort": 80,
                     "protocol": "tcp"
                 }
             ],
             "essential": true,
+            "entryPoint": [],
+            "command": [],
             "environment": [],
+            "environmentFiles": [],
             "mountPoints": [],
             "volumesFrom": [],
+            "secrets": [],
+            "dnsServers": [],
+            "dnsSearchDomains": [],
+            "extraHosts": [],
+            "dockerSecurityOptions": [],
+            "dockerLabels": {},
+            "ulimits": [],
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
                     "awslogs-create-group": "true",
-                    "awslogs-group": "/ecs/task_definition1",
+                    "awslogs-group": "/ecs/definition-options",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs"
-                }
-            }
+                },
+                "secretOptions": []
+            },
+            "systemControls": []
         }
     ],
-    "family": "task_definition1",
+    "family": "definition-options",
     "taskRoleArn": "arn:aws:iam::745507191446:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::745507191446:role/ecsTaskExecutionRole",
-    "networkMode": "awsvpc",
-    "revision": 5,
+    "networkMode": "bridge",
+    "revision": 1,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -49,6 +61,9 @@
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
         },
         {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.17"
+        },
+        {
             "name": "com.amazonaws.ecs.capability.task-iam-role"
         },
         {
@@ -58,16 +73,13 @@
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
         },
         {
-            "name": "ecs.capability.task-eni"
-        },
-        {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
         }
     ],
     "placementConstraints": [],
     "compatibilities": [
-        "EC2",
-        "FARGATE"
+        "FARGATE",
+        "EC2"
     ],
     "requiresCompatibilities": [
         "EC2"
@@ -78,7 +90,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2022-07-21T16:16:28.217Z",
+    "registeredAt": "2022-07-22T14:16:08.747Z",
     "registeredBy": "arn:aws:iam::745507191446:user/a.smirnov",
     "tags": [
         {
@@ -87,7 +99,7 @@
         },
         {
             "key": "ecs:taskDefinition:stackId",
-            "value": "arn:aws:cloudformation:us-east-1:745507191446:stack/ECS-Console-V2-TaskDefinition-8e4e8545-5997-4393-97f3-6cecb10fc7b9/3b1bac40-0901-11ed-93ce-0a724ea13329"
+            "value": "arn:aws:cloudformation:us-east-1:745507191446:stack/ECS-Console-V2-TaskDefinition-3e4cb7e2-d85c-4668-80fc-8b135264d833/d0dee090-09c8-11ed-a383-0e5efea3b9cb"
         }
     ]
 }
