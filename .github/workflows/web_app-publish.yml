@@ -42,7 +42,7 @@ jobs:
          
 
      - name: Build Docker image
-       run: docker build . --tag mastermole/my_app:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
+       run: docker build . --tag mastermole/my_flask:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
     
      - name: Login to DockerHub
        uses: docker/login-action@v1 
@@ -51,7 +51,7 @@ jobs:
         password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
     
      - name: Push to the DockerHub
-       run: docker push mastermole/my_app:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
+       run: docker push mastermole/my_flask:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
        
            
      - name: Docker pull and run from Docker Hub
@@ -62,7 +62,7 @@ jobs:
              key: ${{ secrets.AWS_PRIVATE_KEY }}
              port: ${{ secrets.PORT }}
              script: |
-               docker pull mastermole/my_app:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
-               docker stop my_app
-               docker rm my_app
-               docker run -d -p 80:5000 --name my_app mastermole/my_app:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}  
+               docker pull mastermole/my_flask:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
+               docker stop my_flask
+               docker rm my_flask
+               docker run -d -p 80:5000 --name my_app mastermole/my_flask:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}  
