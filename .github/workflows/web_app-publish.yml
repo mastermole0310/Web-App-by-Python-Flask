@@ -65,4 +65,4 @@ jobs:
                docker pull mastermole/my_flask:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}
                docker stop my_flask
                docker rm my_flask
-               docker run -d -p 80:5000 --name my_app mastermole/my_flask:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}  
+               docker run -d -p 80:5000 --name my_flask mastermole/my_flask:${{ steps.version-generator.outputs.ARTEFACT_VERSION }}  
