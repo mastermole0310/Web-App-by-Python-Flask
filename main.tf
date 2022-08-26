@@ -123,7 +123,7 @@ data "aws_subnet_ids" "subnet" {
 resource "aws_lb_target_group" "target_group" {
   health_check {
     interval            = 10
-    path                = "/"
+    path                = "/version"
     protocol            = "HTTP"
     timeout             = 5
     healthy_threshold   = 5
